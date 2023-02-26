@@ -14,7 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_cargo")
-public class Cargo {
+public class CargoModel {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
