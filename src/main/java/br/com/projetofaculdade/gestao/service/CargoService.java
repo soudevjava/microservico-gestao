@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.projetofaculdade.gestao.entities.CargoModel;
+import br.com.projetofaculdade.gestao.entities.Cargo;
 import br.com.projetofaculdade.gestao.repositories.CargoRepository;
 
 @Service
@@ -15,31 +15,27 @@ public class CargoService {
 	@Autowired
 	public CargoRepository cargoRepository;
 
-	public void Cargoservice(CargoRepository cargoRepository) {
-		this.cargoRepository = cargoRepository;
-	}
-
-	public List<CargoModel> findAll() {
+	public List<Cargo> findAll() {
 		return cargoRepository.findAll();
 	}
 
-	public CargoModel insert(CargoModel cargoModel) {
-		return cargoRepository.save(cargoModel);
+	public Cargo insert(Cargo cargo) {
+		return cargoRepository.save(cargo);
 	}
 
-	public Optional<CargoModel> findById(Integer id) {
+	public Optional<Cargo> findById(Integer id) {
 		return cargoRepository.findById(id);																		
 	}
 
-	public void delete(CargoModel cargoModel) {						
-		cargoRepository.delete(cargoModel);
+	public void delete(Cargo cargo) {
+		cargoRepository.delete(cargo);
 	}
 
-	public CargoModel update(Integer id, CargoModel newCargoModel) {
-		CargoModel cargoModel = cargoRepository.findById(id).get();
-		cargoModel.setNomeCargo(newCargoModel.getNomeCargo());
-		cargoModel.setSalarioBase(newCargoModel.getSalarioBase());
-		return cargoRepository.save(cargoModel);
+	public Cargo update(Integer id, Cargo newCargo) {
+		Cargo cargo = cargoRepository.findById(id).get();
+		cargo.setNomeCargo(newCargo.getNomeCargo());
+		cargo.setSalarioBase(newCargo.getSalarioBase());
+		return cargoRepository.save(cargo);
 	}
 
 }

@@ -2,6 +2,7 @@ package br.com.projetofaculdade.gestao.service;
 
 import br.com.projetofaculdade.gestao.dto.FuncionarioDto;
 import br.com.projetofaculdade.gestao.entities.Funcionario;
+import br.com.projetofaculdade.gestao.exceptions.IdNaoEncontradoException;
 import br.com.projetofaculdade.gestao.repositories.FuncionarioRepository;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -23,19 +24,18 @@ public class FuncionarioService {
     }
     public FuncionarioDto findById(Integer id){
         Funcionario funcionario = funcionarioRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Funcionário não encontrado com o id: " + id));
+                .orElseThrow(() -> new IdNaoEncontradoException("Funcionário não encontrado com o id: " + id));
         return new FuncionarioDto(funcionario);
     }
     public void deleteById(Integer id) {
         Funcionario funcionario = funcionarioRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Funcionário não encontrado com o id: " + id));
+                .orElseThrow(() -> new IdNaoEncontradoException("Funcionário não encontrado com o id: " + id));
         funcionarioRepository.delete(funcionario);
     }
 
     public Funcionario update(Integer id, FuncionarioDto funcionarioDto) {
         Funcionario funcionario = funcionarioRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Funcionário não encontrado com o id: " + id));
-
+                .orElseThrow(() -> new IdNaoEncontradoException("Funcionário não encontrado com o id: " + id));
         funcionario.setName(funcionarioDto.getName());
         funcionario.setEmail(funcionarioDto.getEmail());
         funcionario.setDepartamento(funcionarioDto.getDepartamento());

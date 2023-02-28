@@ -14,14 +14,14 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_cargo")
-public class CargoModel {
+public class Cargo {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Integer idCargo;
-    @Column(name = "nome_Cargo")
+    @Column(name = "nome_cargo")
     private String nomeCargo;
-    @Column(name = "salario_Base")
+    @Column(name = "salario_base")
     private BigDecimal salarioBase;
     @ManyToMany(mappedBy = "cargo")
     @JsonIgnore

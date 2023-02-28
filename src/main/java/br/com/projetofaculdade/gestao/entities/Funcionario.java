@@ -29,6 +29,6 @@ public class Funcionario {
     private String endereco;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tb_funcionario_cargo", joinColumns = @JoinColumn(name = "idFuncionario"), inverseJoinColumns = @JoinColumn(name = "idCargo"))
-    private List<CargoModel> cargo;// = new ArrayList<>();
+    private List<Cargo> cargo;// = new ArrayList<>();
 
 }

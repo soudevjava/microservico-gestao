@@ -1,12 +1,8 @@
 package br.com.projetofaculdade.gestao.dto;
 
-import br.com.projetofaculdade.gestao.entities.CargoModel;
 import br.com.projetofaculdade.gestao.entities.Funcionario;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
